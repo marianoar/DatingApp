@@ -1,0 +1,23 @@
+# Generals
+
+pwd
+displays the directory (or folder) you're currently in.
+mkdir nameFolder
+
+# .NET
+dotnet --info
+dotnet -h
+dotnet new list
+dotnet new sln ->Crea el solution file
+dotnet new webapi -controllers -n API -> crea nuevo proyecto definiendo el template, agrega controllers y -n es el name
+dotnet sln add API -> agrega el project into the solution
+
+dotnet run 
+-> Using launch settings from C:\...\api\Properties\launchSettings.json...
+
+dotnet dev-certs https --trust
+
+dotnet watch
+
+# Angular
+
