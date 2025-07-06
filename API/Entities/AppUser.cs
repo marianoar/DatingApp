@@ -2,7 +2,10 @@
 {
     public class AppUser
     {
-        public int Id { get; set; } //para EF debe ser siempre ID, igual creeria que agregarse un decorador posible ser puede
-        public required string UserName { get; set; }
+        public string Id { get; set; } = Guid.NewGuid().ToString();
+        //OLD para EF debe ser siempre ID, igual creeria que agregarse un decorador posible ser puede
+
+        public required string DisplayName { get; set; }
+        public required string Email { get; set; }
     }
 }
