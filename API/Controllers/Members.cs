@@ -2,6 +2,7 @@
 using API.Entities;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 
 namespace API.Controllers
 {
@@ -17,18 +18,18 @@ namespace API.Controllers
         //}
 
         [HttpGet]
-        public ActionResult<IReadOnlyList<AppUser>> GetMembers()
+        public async Task<ActionResult<IReadOnlyList<AppUser>>> GetMembers()
         {
-            var users = context.Users.ToList();
+            var users = await context.Users.ToListAsync();
 
             return users;
 
         }
 
         [HttpGet("{id}")] //ojo que es api/memberS/
-        public ActionResult<AppUser> GetMember(string id)
+        public async Task<ActionResult<AppUser>> GetMember(string id)
         {
-            var user = context.Users.Find(id);
+            var user = await context.Users.FindAsync(id);
 
             if(user == null) 
                 return NotFound();
