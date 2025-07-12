@@ -3,7 +3,11 @@
 pwd
 displays the directory (or folder) you're currently in.
 mkdir nameFolder
-
+mkcert -> ver github
+{ mkdir ssl; cd ssl; mkcert localhost }
+luego en angular.json en 
+"serve": {"options":{"ssl":true,"sslCert":"./ssl/localhost.pem", "sslKey":"./ssl/localhost-key.pem"
+}, 
 # .NET
 dotnet --info
 dotnet -h
