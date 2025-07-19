@@ -28,12 +28,30 @@ namespace API.Controllers
                 PasswordSalt = hmac.Key
             };
 
-            context.Users.Add(user);
+            context.Users.Add(user); //no se usa async aqui, solo en casos especiales
             await context.SaveChangesAsync();
 
             return Ok(user);
         }
 
+        [HttpPost("login")]
+        public async Task<ActionResult<AppUser>> Login(LoginDto loginDto)
+        {
+            var user = await context.Users.SingleOrDefaultAsync(x=> x.Email == loginDto.Email);
+            if (user == null)
+                return Unauthorized("Invalid email address");
+
+            using var hmac = new HMACSHA512(user.PasswordSalt);
+            var computedHash = hmac.ComputeHash(Encoding.UTF8.GetBytes(loginDto.Password));
+
+            for (int i = 0; i < computedHash.Length; i++)
+            {
+                if (computedHash[i] != user.PasswordHash[i])
+                    return Unauthorized("Invalid password");
+            }
+            return Ok(user);
+
+        }
         private async Task<bool> EmailExists(string email)
         {
             return await context.Users.AnyAsync(x=>x.Email.ToLower() == email.ToLower());
