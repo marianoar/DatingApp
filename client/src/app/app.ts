@@ -20,7 +20,7 @@ export class App implements OnInit {
   constructor(private http: HttpClient) { }
 
   async ngOnInit() {
-    this.members.set(await this.getMembers());
+   // this.members.set(await this.getMembers());
     this.setCurrentUser();
   }
 
