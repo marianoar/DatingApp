@@ -7,25 +7,23 @@ import { AccountService } from '../../../core/services/account-service';
   selector: 'app-register',
   imports: [FormsModule],
   templateUrl: './register.html',
-  styleUrl: './register.css'
+  styleUrl: './register.css',
 })
 export class Register {
-
   cancelRegister = output<boolean>();
   protected creds = {} as RegisterCredentials;
   protected accountService = inject(AccountService);
 
   register() {
-
     this.accountService.register(this.creds).subscribe({
-      next: response => {
+      next: (response) => {
         console.log(response);
         this.cancel();
       },
-      error: error => {
+      error: (error) => {
         console.error('Registration failed', error);
-      }
-    })
+      },
+    });
   }
   cancel() {
     this.cancelRegister.emit(false);

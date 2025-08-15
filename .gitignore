@@ -403,3 +403,7 @@ FodyWeavers.xsd
 *.sln.iml
 
 
+API/datingapp.db
+API/datingapp.db-shm
+API/datingapp.db-wal
+API/datingapp.db
