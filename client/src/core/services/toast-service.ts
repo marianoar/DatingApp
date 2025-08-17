@@ -20,7 +20,7 @@ export class ToastService {
   private createToastElement(
     message: string,
     alertClass: string,
-    duration: 500
+    duration: number = 2500
   ) {
     const toastContainer = document.getElementById('toast-container');
     if (!toastContainer) return;
@@ -39,5 +39,18 @@ export class ToastService {
         toastContainer.removeChild(toast);
       }
     }, duration);
+  }
+
+  success(message: string, duration?: number) {
+    this.createToastElement(message, 'alert-success', duration);
+  }
+  error(message: string, duration?: number) {
+    this.createToastElement(message, 'alert-error', duration);
+  }
+  warning(message: string, duration?: number) {
+    this.createToastElement(message, 'alert-warning', duration);
+  }
+  info(message: string, duration?: number) {
+    this.createToastElement(message, 'alert-info', duration);
   }
 }
