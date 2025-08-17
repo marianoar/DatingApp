@@ -12,7 +12,7 @@ export class ToastService {
     if (!document.getElementById('toast-container')) {
       const container = document.createElement('div');
       container.id = 'toast-container';
-      container.className = 'toast toast-bottom toast-end';
+      container.className = 'toast toast-top toast-end mt-25';
       document.body.appendChild(container);
     }
   }
@@ -28,7 +28,7 @@ export class ToastService {
     toast.classList.add('alert', alertClass, 'shadow-lg');
     toast.innerHTML = `
       <span>${message} </span>
-      <button class="btn btn-sm btn-ghost ml-4">Close</button>
+      <button class="btn btn-ghost ml-4">Close</button>
       `;
     toast.querySelector('button')?.addEventListener('click', () => {
       toastContainer.removeChild(toast);
