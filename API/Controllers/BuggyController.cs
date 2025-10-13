@@ -18,7 +18,7 @@ namespace API.Controllers
         [HttpGet("server-error")]
         public IActionResult GetServerError()
         {
-            throw new Exception("server error");
+            throw new Exception("Server ha devuelto un error");
         }
         [HttpGet("bad-request")]
         public IActionResult GetBadRequest()
