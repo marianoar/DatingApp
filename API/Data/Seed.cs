@@ -22,10 +22,10 @@ namespace API.Data
                 return;
             }
 
-            using var hmac = new HMACSHA512();
-
             foreach (var item in members)
             {
+                using var hmac = new HMACSHA512();
+
                 var user = new AppUser
                 {
                     Id = item.Id,
