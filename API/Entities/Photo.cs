@@ -9,5 +9,6 @@
 
         //Navigation properties
         public Member Member { get; set; } = null!;
+        public string MemberId { get; set; } = null!;
     }
 }
