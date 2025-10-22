@@ -1,8 +1,7 @@
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 import { inject, Injectable } from '@angular/core';
 import { environment } from '../../environments/environment.development';
 import { Member } from '../../types/member';
-import { AccountService } from './account-service';
 
 @Injectable({
   providedIn: 'root'
@@ -10,20 +9,20 @@ import { AccountService } from './account-service';
 export class MemberService {
 
   private http = inject(HttpClient);
-  private accountService = inject(AccountService);
   private baseUrl = environment.apiUrl;
 
   getMembers() {
-    return this.http.get<Member[]>(this.baseUrl + 'members', this.getHttpOptions());
+    return this.http.get<Member[]>(this.baseUrl + 'members'); 
+    // remuevo el getHttpOptions() because el token es added by the interceptor
   }
   getMember(id: string) {
-    return this.http.get<Member>(this.baseUrl + 'members/' + id, this.getHttpOptions());
+    return this.http.get<Member>(this.baseUrl + 'members/' + id);
   }
-  private getHttpOptions() {
-    return {
-      headers: new HttpHeaders({
-        Authorization: 'Bearer ' + this.accountService.currentUser()?.token
-      })
-    }
-  }
+  // private getHttpOptions() {
+  //   return {
+  //     headers: new HttpHeaders({
+  //       Authorization: 'Bearer ' + this.accountService.currentUser()?.token
+  //     })
+  //   }
+  // }
 }
