@@ -3,7 +3,10 @@
 pwd
 displays the directory (or folder) you're currently in.
 mkdir nameFolder
-mkcert -> ver github
+mkcert -> ver GitHub
+mkcert -install
+mkdir ssl
+mkcert localhost
 { mkdir ssl; cd ssl; mkcert localhost }
 luego en angular.json en 
 "serve": {"options":{"ssl":true,"sslCert":"./ssl/localhost.pem", "sslKey":"./ssl/localhost-key.pem"
@@ -34,12 +37,18 @@ dotnet tool install --global dotnet-ef --version X.X.X
 dotnet ef -h
 dotnet ef migrations add InitialCreate -o Data/Migrations
 dotnet ef database update //update despues de cada migration
-dotnet ef database drop 
-
-dotnet ef migrations has-pending-model-changes // This will tell you if any change have been made that will result in a new migration being required
 
 --migrations
 dotnet ef migrations add UserEntityUpdated
+dotnet ef database update //update despues de cada migration
+
+#Remember crete environments files
+two files: environment and environment.development
+export const environment = {
+  production: false,
+  apiUrl: 'https://myApi/api/'
+};
+
 
 
 
