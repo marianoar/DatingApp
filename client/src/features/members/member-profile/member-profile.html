@@ -13,7 +13,7 @@
   </h3>
   @if(memberService.editMode()) {
   <form
-    #editProfileForm="ngForm"
+    #editForm="ngForm"
     (ngSubmit)="updateProfile()"
     class="flex flex-col w-full gap-4"
   >
