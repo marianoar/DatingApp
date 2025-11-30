@@ -11,12 +11,12 @@ import { Member } from '../../../types/member';
 import { DatePipe } from '@angular/common';
 import { MemberService } from '../../../core/services/member-service';
 import { EditableMember } from '../../../types/editableMember';
-import { NgForm } from '@angular/forms';
+import { FormsModule, NgForm } from '@angular/forms';
 import { ToastService } from '../../../core/services/toast-service';
 
 @Component({
   selector: 'app-member-profile',
-  imports: [DatePipe],
+  imports: [DatePipe, FormsModule],
   templateUrl: './member-profile.html',
   styleUrl: './member-profile.css',
 })
@@ -26,7 +26,12 @@ export class MemberProfile implements OnInit, OnDestroy {
   private toast = inject(ToastService);
   private route = inject(ActivatedRoute);
   protected member = signal<Member | undefined>(undefined);
-  protected editableMember?: EditableMember;
+  protected editableMember: EditableMember = {
+    displayName: '',
+    description: '',
+    city: '',
+    country: '',
+  };
 
   ngOnInit(): void {
     this.route.parent?.data.subscribe({
